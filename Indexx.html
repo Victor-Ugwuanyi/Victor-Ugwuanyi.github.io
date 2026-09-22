@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Victor Ugwuanyi — Cybersecurity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f17;
+    --panel: #121826;
+    --panel-alt: #17202f;
+    --border: #232c3d;
+    --text: #e7ecf5;
+    --text-muted: #8792a6;
+    --text-faint: #5b6577;
+    --teal: #4fd8c4;
+    --amber: #f0a868;
+  }
+  :root:not([data-theme="light"]) { color-scheme: dark; }
+
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, sans-serif;
+    line-height: 1.6;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  h1, h2, h3 { font-family: "Space Grotesk", "Inter", sans-serif; margin: 0; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+  a { color: var(--teal); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  /* -------- nav -------- */
+  nav.top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 0;
+  }
+  nav.top .mark { font-family: "Space Grotesk"; font-weight: 600; font-size: 16px; }
+  nav.top .links { display: flex; gap: 22px; font-size: 13.5px; }
+  nav.top .links a { color: var(--text-muted); }
+  nav.top .links a:hover { color: var(--text); }
+
+  /* -------- hero -------- */
+  .hero { padding: 60px 0 50px; border-bottom: 1px solid var(--border); }
+  .eyebrow { color: var(--teal); font-size: 13px; margin-bottom: 14px; font-family: "JetBrains Mono"; }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 44px);
+    font-weight: 600;
+    line-height: 1.15;
+    max-width: 14ch;
+  }
+  .hero p.lede {
+    color: var(--text-muted);
+    font-size: 17px;
+    max-width: 52ch;
+    margin-top: 18px;
+  }
+  .hero .cta-row { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-size: 13.5px;
+    border: 1px solid var(--border);
+  }
+  .btn.primary { background: var(--teal); color: #06231e; font-weight: 600; border-color: var(--teal); }
+  .btn.primary:hover { text-decoration: none; opacity: 0.9; }
+  .btn.ghost { color: var(--text); }
+  .btn.ghost:hover { text-decoration: none; border-color: var(--text-faint); }
+
+  /* -------- section shared -------- */
+  section { padding: 54px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  .section-label {
+    font-family: "JetBrains Mono"; font-size: 12.5px; color: var(--text-faint);
+    margin-bottom: 16px;
+  }
+  section h2 { font-size: 22px; font-weight: 600; margin-bottom: 16px; }
+
+  /* -------- about -------- */
+  #about p { color: var(--text-muted); max-width: 62ch; }
+
+  /* -------- project card -------- */
+  .project-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 26px;
+  }
+  .project-card .status {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12px; color: var(--teal); margin-bottom: 12px;
+  }
+  .project-card .status .dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--teal);
+    box-shadow: 0 0 0 3px rgba(79,216,196,0.18);
+  }
+  .project-card h3 { font-size: 19px; margin-bottom: 10px; }
+  .project-card p { color: var(--text-muted); margin: 0 0 18px; }
+  .project-card ul.features {
+    list-style: none; padding: 0; margin: 0 0 20px;
+    display: grid; gap: 8px;
+  }
+  .project-card ul.features li {
+    font-size: 13.5px; color: var(--text-muted);
+    padding-left: 16px; position: relative;
+  }
+  .project-card ul.features li::before {
+    content: ""; position: absolute; left: 0; top: 8px;
+    width: 5px; height: 5px; background: var(--amber); border-radius: 50%;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .tag {
+    font-family: "JetBrains Mono"; font-size: 11.5px;
+    background: var(--panel-alt); border: 1px solid var(--border);
+    padding: 4px 9px; border-radius: 4px; color: var(--text-muted);
+  }
+  .project-card .links { display: flex; gap: 16px; font-size: 13.5px; }
+  .placeholder-note {
+    font-size: 11.5px; color: var(--text-faint); margin-top: 14px;
+  }
+
+  /* -------- skills -------- */
+  .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+  .skill-group h4 {
+    font-size: 12.5px; color: var(--text-faint); font-weight: 500;
+    margin: 0 0 10px; font-family: "JetBrains Mono";
+  }
+  .skill-group ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+  .skill-group li { font-size: 14px; color: var(--text); }
+
+  /* -------- contact -------- */
+  #contact p.lede { color: var(--text-muted); max-width: 50ch; margin-bottom: 22px; }
+  .contact-list { display: grid; gap: 10px; }
+  .contact-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 16px; background: var(--panel); border: 1px solid var(--border);
+    border-radius: 4px; font-size: 14px;
+  }
+  .contact-row .label { color: var(--text-faint); font-size: 12px; font-family: "JetBrains Mono"; }
+
+  footer {
+    padding: 30px 0 40px; text-align: center;
+    color: var(--text-faint); font-size: 12.5px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="top">
+    <div class="mark">VU</div>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="eyebrow">Cybersecurity / SOC track</div>
+    <h1>Victor Ugwuanyi builds tools that watch networks and catch what shouldn't be there.</h1>
+    <p class="lede">
+      I'm working toward a SOC analyst / cybersecurity role by building real,
+      working security tools instead of only studying theory — most recently
+      a full network intrusion detection and prevention system, built and
+      debugged end to end on my own lab VM.
+    </p>
+    <div class="cta-row">
+      <a class="btn primary" href="#work">See the project</a>
+      <a class="btn ghost" href="#contact">Get in touch</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-label">// about</div>
+    <h2>How I got here</h2>
+    <p>
+      I started by asking a simple question — could I build a real tool that
+      watches network traffic and reacts to attacks, not just read about how
+      one works? That turned into Sentinel: a rule-based intrusion detection
+      and prevention system I designed, built, deployed to a Kali Linux VM,
+      and debugged through real issues — wrong interfaces, packet timing,
+      firewall state drift — the kind of troubleshooting that doesn't show up
+      in a tutorial.
+    </p>
+  </section>
+
+  <section id="work">
+    <div class="section-label">// featured project</div>
+    <h2>Sentinel — Network Intrusion Detection &amp; Prevention</h2>
+
+    <div class="project-card">
+      <div class="status"><span class="dot"></span> Actively developed</div>
+      <h3>A live security dashboard that watches, detects, and blocks</h3>
+      <p>
+        Sentinel captures live network traffic (or replays a saved .pcap),
+        runs it through a rule-based detection engine, and surfaces threats
+        on a real-time web dashboard — with one-click firewall blocking for
+        the source of an attack.
+      </p>
+      <ul class="features">
+        <li>Live packet capture and PCAP file analysis via Scapy</li>
+        <li>Detects port scans, SYN floods, ICMP floods, ARP spoofing, and known-bad signatures</li>
+        <li>Real-time dashboard: live packet-rate chart, color-coded alert feed</li>
+        <li>Prevention layer: blocks a source IP directly via the OS firewall</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Flask</span>
+        <span class="tag">Scapy</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Kali Linux</span>
+        <span class="tag">iptables</span>
+      </div>
+      <div class="links">
+        <a href="#" onclick="return false;">GitHub repo →</a>
+        <a href="#" onclick="return false;">Demo write-up →</a>
+      </div>
+      <div class="placeholder-note">
+        ⚠ Placeholder links above — replace with your real GitHub repo and any
+        write-up or demo video once you've pushed the code.
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-label">// skills</div>
+    <h2>What I work with</h2>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h4>Security</h4>
+        <ul>
+          <li>Network intrusion detection concepts</li>
+          <li>Firewall configuration (iptables)</li>
+          <li>Packet analysis (Scapy, Wireshark)</li>
+          <li>Kali Linux tooling (nmap, arpspoof)</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>Development</h4>
+        <ul>
+          <li>Python</li>
+          <li>Flask / REST APIs</li>
+          <li>JavaScript (vanilla, no framework)</li>
+          <li>HTML / CSS</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>Currently learning</h4>
+        <ul>
+          <li>SIEM fundamentals</li>
+          <li>Incident response workflows</li>
+          <li>Threat hunting basics</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-label">// contact</div>
+    <h2>Let's talk</h2>
+    <p class="lede">Open to SOC analyst, cybersecurity intern, or junior security engineering roles.</p>
+    <div class="contact-list">
+      <div class="contact-row"><span>your.email@example.com</span><span class="label mono">EMAIL — edit me</span></div>
+      <div class="contact-row"><span>linkedin.com/in/your-handle</span><span class="label mono">LINKEDIN — edit me</span></div>
+      <div class="contact-row"><span>github.com/your-handle</span><span class="label mono">GITHUB — edit me</span></div>
+    </div>
+  </section>
+
+  <footer>Victor Ugwuanyi — built while learning, one project at a time.</footer>
+</div>
+</body>
+</html>
